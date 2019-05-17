@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Patient{% endblock %}
+
+{% block content %}
+
+<div class=' text-center p-5 ' style="color:black">
+        <h2 class=' .text-secondary'>Patient Prescription Form</h2>
+		
+        <p style="text-align:left">All prescribed medications by the doctor must be recorded .</p> 
+		
+				
+</div>
+
+   <form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+  </form> 
+  
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+  
+{% endblock %}

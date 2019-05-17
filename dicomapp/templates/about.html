@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}about{% endblock %}
+{% block content %}
+<div class=' text-center p-5 ' style="color:black">
+        <h2 class=' .text-secondary'>About Us:</h2>
+		
+        <p style="text-align:left">DicomGuru's DICOM webapp revolutionizes radiological patients operations at hospitals, medical practices, radiology departments, 
+		including medical image acquisition, processing, interpretation and archiving. DicomGuru covers Out patient management,
+		patient health records management, medical imaging including X-ray radiography, magnetic resonance imaging, medical ultrasonography or ultrasound, endoscopy, 
+		elastography, tactile imaging, thermography, medical photography and nuclear medicine functional imaging techniques as 
+		positron emission tomography (PET).</p> 
+		
+		<iframe src="{% static 'Minds_and_Machines_Lungs_animation.gif' %}" width="800" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+		
+</div>
+{% endblock %}
+

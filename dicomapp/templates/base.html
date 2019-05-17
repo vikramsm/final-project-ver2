@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html style="height:100%">
+<head>
+	{% load static %}
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+	
+	<!--<link rel="stylesheet" href="{% static 'css/dcim.css' %}">-->
+	
+    <!--Style the footer-->
+		
+	<style>
+		.footer {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: auto;
+		background-color:black;
+		color: white;
+		text-align: center;
+		}
+	</style> 	
+		
+</head>
+	
+	<!--<body class="bg-secondary">-->
+	<body bgcolor="#E6E6FA">
+	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand"  href="{% url 'index' %}"><p style="color:#FFC300; font-weight: 900;">DicomGuru</p></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+		<li class="nav-item active">
+        <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+		</li>
+		<li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">About Us</a>
+		</li>
+		
+		<li class="nav-item">
+        <a class="nav-link" href="{% url 'contactform' %}">Contact Form</a>
+		</li>
+		
+		<li class="nav-item">
+        <a class="nav-link" href="{% url 'directions' %}">Directions</a>
+		</li>
+		
+		
+		{% if user.is_authenticated %}		
+			
+		<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Patient Records
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'patient_record' %}">Register New Patient</a>
+		   <a class="dropdown-item" href="{% url 'patient_medicalinfo' %}">Patient Medical Info</a>
+          <a class="dropdown-item" href="{% url 'patient_list' %}">Patient List</a>
+          <div class="dropdown-divider"></div>
+          
+        </div>
+		</li>
+		
+		<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Patient OPD
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'patient_admission' %}">Patient Admissions</a>
+		  <a class="dropdown-item" href="{% url 'admission_list' %}">Patient Admissions List</a>
+		   <a class="dropdown-item" href="{% url 'patient_appointment' %}">Patient Appointments</a>
+		   <a class="dropdown-item" href="{% url 'appointment_list' %}">Patient Appointments List</a>
+          <a class="dropdown-item" href="{% url 'patient_prescription' %}">Patient Presciptions</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'patient_medicaltest' %}">Patient Medical Tests</a>
+        </div>
+		</li>
+		
+		<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Medical Imaging & Diagnostics
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'send_to_dcom' %}">View Radiology Scans</a>
+		  
+          <a class="dropdown-item" href="{% url 'patientfiles_upload' %}">Upload Lab Reports</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="">DICOM Format Conversions_future</a>
+        </div>
+		</li>
+		
+		<li class="nav-item">
+		<a class="nav-link" href="{% url 'logout' %}">logout</a>
+		</li>
+		
+		<li class="nav-item">
+		<a class="nav-link" style="color:red;">Hi {{ user.username }}!  </p>	 
+		</li>
+		{% else %}
+		
+		<li class="nav-item">
+		<a class="nav-link" href="{% url 'login' %}">login</a>
+		</li>
+		{% endif %}
+		</ul>
+   
+	</div>
+	</nav>
+	
+	<main>
+	<div class="container container-fluid">
+	
+	{% block content %}
+       
+    {% endblock %}
+	 
+	</div>
+	
+	</main>
+	
+		
+	<div class="footer">
+	<p>CSCIE33A Final project - DicomGuru, @By Vikram Maduskar</p>
+	</div>
+	
+	
+	</body>
+</html>

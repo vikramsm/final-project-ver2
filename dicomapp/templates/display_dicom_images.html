@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class=' text-center p-5 ' style="color:black">
+	<h2 class=' .text-secondary'> Dicom Files Uload</h2>
+        <h2 class=' .text-secondary'>Upload Dicom Files for Archiving and retrievel</h2>	
+				
+</div>
+ 
+ {% for dicom in dicom_images %} 
+            <div class="col-md-4"> 
+                    {{ dicom.name }} 
+                     <img src="{{ dicom.dicom_Main_Img.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> 
+            </div> 
+    {% endfor %} 
+    
+
+{% endblock %}
